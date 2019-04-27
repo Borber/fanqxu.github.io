@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>Python笔记之列表与字典 - F4n9X&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="列表 0x00 list  　　  列表 list 是 Python 内置的一种数据类型，它是一种有序的集合，可随时添加(append)和删除(pop)其中的元素。123&amp;gt;&amp;gt;&amp;gt; VarName = [&apos;elements0&apos;,&apos;elements1&apos;,&apos;elements2&apos;]&amp;gt;&amp;gt;&amp;gt; VarName[&apos;elements0&apos;,&apos;elements1&apos;,&apos;elements2">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python笔记之列表与字典">
+<meta property="og:url" content="https://fanqxu.com/2018/11/06/Python列表之list与tuple/index.html">
+<meta property="og:site_name" content="F4n9X&#39;s Blog">
+<meta property="og:description" content="列表 0x00 list  　　  列表 list 是 Python 内置的一种数据类型，它是一种有序的集合，可随时添加(append)和删除(pop)其中的元素。123&amp;gt;&amp;gt;&amp;gt; VarName = [&apos;elements0&apos;,&apos;elements1&apos;,&apos;elements2&apos;]&amp;gt;&amp;gt;&amp;gt; VarName[&apos;elements0&apos;,&apos;elements1&apos;,&apos;elements2">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-20T11:43:49.653Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python笔记之列表与字典">
+<meta name="twitter:description" content="列表 0x00 list  　　  列表 list 是 Python 内置的一种数据类型，它是一种有序的集合，可随时添加(append)和删除(pop)其中的元素。123&amp;gt;&amp;gt;&amp;gt; VarName = [&apos;elements0&apos;,&apos;elements1&apos;,&apos;elements2&apos;]&amp;gt;&amp;gt;&amp;gt; VarName[&apos;elements0&apos;,&apos;elements1&apos;,&apos;elements2">
+<meta name="twitter:site" content="Expert">
+
+
+
+<link rel="alternative" href="/atom.xml" title="Python笔记之列表与字典" type="application/atom+xml">
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/monokai-sublime.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131397348-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-131397348-1');
+</script>
+
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="Python笔记之列表与字典" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="/gallery/python.jpg" alt="Python笔记之列表与字典">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-11-05T16:03:04.000Z">2018-11-06</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Notes/">Notes</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 分钟 读完 (大约 1515 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Python笔记之列表与字典
+            
+        </h1>
+        <div class="content">
+            <p></p><h1>列表</h1><p></p>
+<h2>0x00 list</h2>
+
+<p>　　  列表 <font color="red"><code>list</code></font> 是 Python 内置的一种数据类型，它是一种<b>有序</b>的集合，可随时<b>添加</b>(append)和<b>删除</b>(pop)其中的元素。<br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; VarName = [<span class="hljs-string">'elements0'</span>,<span class="hljs-string">'elements1'</span>,<span class="hljs-string">'elements2'</span>]</span></span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; VarName</span></span><br><span class="line">['elements0','elements1','elements2']</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>　　这里变量 <code>VarName</code>就是一个<code>list</code>。<font color="red"><code>len()</code></font>函数获取 <strong>list</strong> 元素个数，若 <strong>list</strong> 中无一个元素，就是一个空的 <strong>list</strong> ，长度为0：</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; len(VarName)</span></span><br><span class="line">3</span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; <span class="hljs-built_in">test</span> = []</span></span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; len(<span class="hljs-built_in">test</span>)</span></span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<p><strong>索引访问：</strong><br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; VarName[0]</span></span><br><span class="line">'elements0'</span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; VarName[1]</span></span><br><span class="line">'elements1'</span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; VarName[2]</span></span><br><span class="line">'elements2'</span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; VarName[3]</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File "&lt;stdin&gt;", line 1, in &lt;module&gt;</span><br><span class="line">IndexError: list index out of range</span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; VarName[-1]</span></span><br><span class="line">'elements2'</span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; VarName[-2]</span></span><br><span class="line">'elements1'</span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; VarName[-3]</span></span><br><span class="line">'elements0'</span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; VarName[-4]</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File "&lt;stdin&gt;", line 1, in &lt;module&gt;</span><br><span class="line">IndexError: list index out of range</span><br></pre></td></tr></table></figure></p>
+<p>  　　索引是从<strong>0</strong>开始，并且当索引超出了范围时，会报一个 <strong>IndexError</strong> 错误。取最后一个元素，还可用-1做索引；以此类推，可获取倒数第2个、倒数第3个。</p>
+<p>因为<code>list</code>是一个可变有序表，所以可往其中添加、插入、删除、替换元素：<br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; sports = [<span class="hljs-string">'table tennis'</span>,<span class="hljs-string">'badminton'</span>]</span></span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; sports.append(<span class="hljs-string">'Tai Chi'</span>)</span></span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; sports</span></span><br><span class="line">['table tennis','basketball','Tai Chi']</span><br></pre></td></tr></table></figure></p>
+<font color="red"><code>append()</code></font>方法将元素追加到末尾，将元素插入指定位置使用<code>insert()</code>方法，例如插入一元素至首(0)：<br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; sports</span></span><br><span class="line">['table tennis','basketball','Tai Chi']</span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; sports.insert(0,badminton)</span></span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; sports</span></span><br><span class="line">['badminton','table tennis','basketball','Tai Chi']</span><br></pre></td></tr></table></figure><br><br><font color="red"><code>pop()</code></font>方法删除 <strong>list</strong> 末尾的元素：<br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">['badminton','table tennis','basketball']</span><br></pre></td></tr></table></figure><br><br><font color="red"><code>pop(i)</code></font>方法删除指定位置的元素，<font color="red">i</font> 是索引位置<br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; sports.pop(2)</span></span><br><span class="line">'basketball'</span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; sports</span></span><br><span class="line">['badminton','table tennis']</span><br></pre></td></tr></table></figure><br><br><strong>替换</strong>，直接赋值给对应索引位置：<br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; sports[0] = <span class="hljs-string">'swim'</span></span></span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; sports</span></span><br><span class="line">['swim','table tennis']</span><br></pre></td></tr></table></figure><br><br><strong>list</strong> 中的元素可以不同，可以同时有<strong>字符串</strong>、<strong>数型</strong>、<strong>布尔型</strong>；另外，<strong>list</strong> 中一个元素可为另一个 <strong>list</strong><br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; proLanguage = [<span class="hljs-string">'java'</span>,<span class="hljs-string">'python'</span>,[<span class="hljs-string">'html'</span>,<span class="hljs-string">'css'</span>],<span class="hljs-string">'c++'</span>]</span></span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; len(proLanguage)</span></span><br><span class="line">4</span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; proLanguage[2]</span></span><br><span class="line">['html','css']</span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; webDesign = [<span class="hljs-string">'html'</span>,<span class="hljs-string">'css'</span>]</span></span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; proLanguage = [<span class="hljs-string">'java'</span>,<span class="hljs-string">'python'</span>,webDesign,<span class="hljs-string">'c++'</span>]</span></span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; proLanguage[2] == webDesign</span></span><br><span class="line">True</span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; proLanguage[2][0] == webDesign[0] == <span class="hljs-string">'html'</span></span></span><br><span class="line">True</span><br></pre></td></tr></table></figure><br><br><h2>0x01 tuple</h2><br><br>另一种有序列表叫元组：<strong>tuple</strong><br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; sex = (<span class="hljs-string">'male'</span>,<span class="hljs-string">'female'</span>)</span></span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; sex</span></span><br><span class="line">('male','female')</span><br></pre></td></tr></table></figure><br><br><strong>tuple</strong> 与 <strong>list</strong> 较相似；但 <strong>tuple</strong> 一旦初始化就不能修改。它没有<code>append()</code>、<code>insert()</code>方法，可以正常使用sex[0]、sex[1]，但不能赋值成另外的元素；其他获取元素的方法和 <strong>list</strong> 一样。<br><br><strong>tuple</strong> 不可变，所以代码更加安全；若能够代替 <strong>list</strong> ，请尽量使用 <strong>tuple</strong> 。<br><br><strong> 一个“可变的” tuple</strong><br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; varTuple = (<span class="hljs-string">'A'</span>,<span class="hljs-string">'B'</span>,[<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>])</span></span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; varTuple[2][0] = <span class="hljs-string">'X'</span></span></span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; varTuple[2][1] = <span class="hljs-string">'Y'</span></span></span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; varTuple</span></span><br><span class="line">('A','B',['X','Y'])</span><br></pre></td></tr></table></figure><br><br>表面上，<strong>tuple</strong> 元素确实变了，但其实变的是 <strong>list</strong> 的元素。<br><br><font color="red"><strong>请注意：</strong></font>
+
+<p>当定义只有１个元素的 <strong>tuple</strong>，如果：</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; numOne = (1)</span></span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; numOne</span></span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<p>　　请注意，这是一个错觉。这时，定义的不是 <strong>tuple</strong>，而是给变量<code>numOne</code>赋值<code>１</code>这个数！因为括号<code>()</code>既可表示 <strong>tuple</strong>，又可表示数学中的小括号。因此，<strong>Python</strong> 规定，这种情况下按小括号进行计算。</p>
+<p>所以，只有１个元素的 <strong>tuple</strong> 定义时须加一个逗号<font color="red"><code>,</code></font> ：</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; numOne = (1,)</span></span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; numOne</span></span><br><span class="line">(1,)</span><br></pre></td></tr></table></figure>
+<p>然后，<strong>Python</strong> 在显示只有 1 个元素的 <strong>tuple</strong> 时，也会加一个逗号<font color="red"><code>,</code></font> ，以免误解成数学计算意义上的括号。</p>
+<p></p><h1>字典</h1><p></p>
+<h2>0x00 dict</h2>
+
+<p>　　<strong>Python</strong> 内置了字典，<strong>dict</strong> 全称 <strong>dictionary</strong> 。其他语言中，可能称作为 <strong>map</strong> ，具有极快的查找速度，使用 <strong>key-value</strong>(键-值)存储：</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; dictionary = &#123;<span class="hljs-string">'zone'</span>:0,<span class="hljs-string">'one'</span>:1,<span class="hljs-string">'two'</span>:2&#125;</span></span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; dictionary</span></span><br><span class="line">&#123;'zone': 0, 'one': 1, 'two': 2&#125;</span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; dictionary[<span class="hljs-string">'one'</span>]</span></span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<p><strong>dict</strong> 查找速度非常快，其实现原理就像查字典一样；</p>
+<p>而 <strong>list</strong> 查找元素的方法就是从头到尾，一个一个地找，<strong>list</strong> 越大，查找越慢。</p>
+<p><strong>dict</strong> 就是先在字典的索引表中找到所要查找的元素所对应的页码，然后直接翻到该页面找到。</p>
+<p>这种 <strong>key-value</strong> 储存方式，存放时必须根据 <strong>key</strong> 算出 <strong>value</strong> 的存放位置；取的时候才能根据 <strong>key</strong> 直接拿到 <strong>value</strong> 。重要牢记：<font color="red"><strong>key必须是不可变对象</strong></font> 。</p>
+<p><strong>通过key放入</strong>：</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; dictionary[<span class="hljs-string">'four'</span>] = 4</span></span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; dictionary[<span class="hljs-string">'four'</span>]</span></span><br><span class="line">4</span><br></pre></td></tr></table></figure>
+<p><strong>后到优先</strong>：</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; dictionary[<span class="hljs-string">'var'</span>] = 5</span></span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; dictionary[<span class="hljs-string">'var'</span>]</span></span><br><span class="line">5</span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; dictionary[<span class="hljs-string">'var'</span>] = 6</span></span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; dictionary[<span class="hljs-string">'var'</span>]</span></span><br><span class="line">6</span><br></pre></td></tr></table></figure>
+<p>一个 <strong>key</strong> 只能对应一个 <strong>value</strong> ，<strong>So，后到优先</strong> 。</p>
+<p><strong>key</strong> 不存在，<strong>dict</strong> 就会报错：</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; dictionary[<span class="hljs-string">'ten'</span>]</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File "&lt;stdin&gt;", line 1, in &lt;module&gt;</span><br><span class="line">KeyError: 'ten'</span><br></pre></td></tr></table></figure>
+<p>判断 <strong>key</strong> 是否存在：</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; <span class="hljs-string">'ten'</span> <span class="hljs-keyword">in</span> dictionary</span></span><br><span class="line">False</span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; dictionary.get(<span class="hljs-string">'ten'</span>)</span></span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; dictionary.get(<span class="hljs-string">'zone'</span>)</span></span><br><span class="line">0</span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; dictionary.get(<span class="hljs-string">'ten'</span>,10)</span></span><br><span class="line">10</span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; dictionary</span></span><br><span class="line">&#123;'zone': 0, 'one': 1, 'two': 2&#125;</span><br></pre></td></tr></table></figure>
+<p>两种方法，一是通过 <strong>in</strong> 判断；二是 <strong>dict</strong> 提供的 <strong>get</strong> 方法， <strong>key</strong> 不存在，会返回 <strong>None</strong> （交互式不显示None）；通过 <strong>get</strong> 方法还可以指定一个 <strong>value</strong> ，但是不会加入此字典，如上所示。</p>
+<p><strong>删除：</strong></p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; dictionary.pop(<span class="hljs-string">'one'</span>)</span></span><br><span class="line">1</span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; dictionary</span></span><br><span class="line">&#123;'zone': 0,'two': 2&#125;</span><br></pre></td></tr></table></figure>
+<p>使用 <strong>pop(key)</strong> 方法删除 <strong>key</strong> ，所对应的 <strong>value</strong> 也会从 <strong>dict</strong> 中删除； <strong>dict</strong> 内部存放顺序和 <strong>key</strong> 放入顺序无关。</p>
+<p> <strong>特点：</strong></p>
+<ul>
+<li><strong>dict</strong><ul>
+<li>查找、插入速度极快，不受<strong>key</strong>的增加而受影响</li>
+<li>需占用大量内存</li>
+</ul>
+</li>
+<li><strong>list</strong><ul>
+<li>查找和插入的时间会随元素的增加而增加</li>
+<li>占用内存较小</li>
+</ul>
+</li>
+</ul>
+<h2>0x01 set</h2>
+
+<p>　　<strong>set</strong> 和 <strong>dict</strong> 非常类似，也是一组 <strong>key</strong> 的集合，但其不存储 <strong>value</strong> 。</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; setEx = <span class="hljs-built_in">set</span>([<span class="hljs-string">'zone'</span>,<span class="hljs-string">'one'</span>,<span class="hljs-string">'two'</span>])</span><br><span class="line">&gt;&gt;&gt; setEx</span><br><span class="line">&#123;<span class="hljs-string">'zone'</span>,<span class="hljs-string">'one'</span>,<span class="hljs-string">'two'</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>　　创建一个 <strong>set</strong> 需要提供一个 <strong>list</strong> 作为输入集合；传入参数 <strong>[zone,one,two]</strong> 是一个 <strong>list</strong> ，而显示的 <strong>{zone,one,two}</strong> 只是说明 <strong>setEx</strong> 内部有这三个元素。注意显示的顺序不代表 <strong>set</strong> 是<strong>有序</strong>的； <strong>set</strong> 中的 <strong>key</strong> 不能重复。</p>
+<p><strong>添加/删除：</strong></p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; setEx.add(<span class="hljs-string">'three'</span>)</span></span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; setEx</span></span><br><span class="line">&#123;'zone','one','two','three'&#125;</span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; setEx.remove(<span class="hljs-string">'zone'</span>)</span></span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; setEx</span></span><br><span class="line">&#123;'one','two','three'&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>add(key)</strong> 方法添加元素（可重复添加，但然并卵），<strong>remove(key)</strong> 方法删除元素。</p>
+<p>另外，<strong>set</strong> 可做数学意义上的交集、并集等：</p>
+ <figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; setEx1 = <span class="hljs-built_in">set</span>([<span class="hljs-string">'one'</span>,<span class="hljs-string">'two'</span>,<span class="hljs-string">'three'</span>])</span></span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; setEx2 = <span class="hljs-built_in">set</span>([<span class="hljs-string">'two'</span>,<span class="hljs-string">'three'</span>,<span class="hljs-string">'four'</span>])</span></span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; setEx1 &amp; setEx2</span></span><br><span class="line">&#123;'two','three'&#125;</span><br><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; setEx1 | setEx2</span></span><br><span class="line">&#123;'one','two','three','four'&#125;</span><br></pre></td></tr></table></figure>
+<p>　　<strong>set</strong> 和 <strong>dict</strong> 唯一区别在于 <strong>value</strong> ，<strong>set</strong> 同样不可放入可变对象，<strong>list</strong> 放入 <strong>set</strong> 会报错。</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;</span><span class="hljs-bash">&gt;&gt; setEx3 = <span class="hljs-built_in">set</span>([1,3,[4,5]])</span></span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File "&lt;stdin&gt;", line 1, in &lt;module&gt;</span><br><span class="line">TypeError: unhashable type: 'list'</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/python/">python</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/11/10/便携式Kali-Linux创建/index.html">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">便携式Kali Linux创建</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/10/24/零基础博客搭建之Github-Pages-Hexo/index.html">
+                <span class="level-item">零基础博客搭建之Github Pages+Hexo</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: false,
+        app_id: 'sr3jdB7UEto7mridvIc0wVsa-gzGzoHsz',
+        app_key: 'XhGF68GD6Pz8U5XewWhjcL8j',
+        placeholder: 'Say something...'
+    });
+</script>
+
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="FanqXu">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        FanqXu
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Special Like Sao Operation
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>World</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        15
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        6
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        14
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/FanqXu">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/FanqXu">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Facebook" href="https://www.facebook.com/zhuanjia.">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="https://twitter.com/Expert83551161">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="RSS" href="/atom.xml">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Notes/">
+            <span class="level-start">
+                <span class="level-item">Notes</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Software/">
+            <span class="level-start">
+                <span class="level-item">Software</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/TechShare/">
+            <span class="level-start">
+                <span class="level-item">TechShare</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Trivia/">
+            <span class="level-start">
+                <span class="level-item">Trivia</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/不美化，怎开发/">
+            <span class="level-start">
+                <span class="level-item">不美化，怎开发</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/骚姿势/">
+            <span class="level-start">
+                <span class="level-item">骚姿势</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Blog/" style="font-size: 20px;">Blog</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/Terminal/" style="font-size: 10px;">Terminal</a> <a href="/tags/Web/" style="font-size: 20px;">Web</a> <a href="/tags/conky/" style="font-size: 10px;">conky</a> <a href="/tags/kali/" style="font-size: 10px;">kali</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/nc/" style="font-size: 10px;">nc</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/root/" style="font-size: 10px;">root</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/个人感悟/" style="font-size: 10px;">个人感悟</a> <a href="/tags/隐私/" style="font-size: 10px;">隐私</a>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/04/26/linux-optimization/index.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/linux_optimization.jpg" alt="Linux 桌面性能瓶颈优化">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-26T10:51:40.000Z">2019-04-26</time></div>
+                    <a href="/2019/04/26/linux-optimization/index.html" class="has-link-black-ter is-size-6">Linux 桌面性能瓶颈优化</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/TechShare/">TechShare</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/04/20/NETCAT-使用笔记/index.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/netcat.png" alt="瑞士军刀 NETCAT 使用笔记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-20T11:32:55.000Z">2019-04-20</time></div>
+                    <a href="/2019/04/20/NETCAT-使用笔记/index.html" class="has-link-black-ter is-size-6">瑞士军刀 NETCAT 使用笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Notes/">Notes</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/04/12/burp-install/index.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/burp.jpg" alt="BurpSuite Pro v1.7.37安装指南">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-12T04:59:36.000Z">2019-04-12</time></div>
+                    <a href="/2019/04/12/burp-install/index.html" class="has-link-black-ter is-size-6">BurpSuite Pro v1.7.37安装指南</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Software/">Software</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/04/03/conky-ubuntu/index.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/conkyLogo.png" alt="Ubuntu Conky 折腾笔记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-03T10:17:30.000Z">2019-04-03</time></div>
+                    <a href="/2019/04/03/conky-ubuntu/index.html" class="has-link-black-ter is-size-6">Ubuntu Conky 折腾笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/不美化，怎开发/">不美化，怎开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/20/Bypass-campusNet/index.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/campus.png" alt="Bypass 校园网认证">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-20T12:53:36.000Z">2019-03-20</time></div>
+                    <a href="/2019/03/20/Bypass-campusNet/index.html" class="has-link-black-ter is-size-6">Bypass 校园网认证</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/骚姿势/">骚姿势</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Blog/">
+                        <span class="tag">Blog</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DNS/">
+                        <span class="tag">DNS</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Hexo/">
+                        <span class="tag">Hexo</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Terminal/">
+                        <span class="tag">Terminal</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Web/">
+                        <span class="tag">Web</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/conky/">
+                        <span class="tag">conky</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/kali/">
+                        <span class="tag">kali</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/linux/">
+                        <span class="tag">linux</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nc/">
+                        <span class="tag">nc</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/python/">
+                        <span class="tag">python</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/root/">
+                        <span class="tag">root</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/vim/">
+                        <span class="tag">vim</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/个人感悟/">
+                        <span class="tag">个人感悟</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/隐私/">
+                        <span class="tag">隐私</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript" src="//ra.revolvermaps.com/0/0/6.js?i=0vcz0iyhni5&amp;m=7&amp;c=ff0000&amp;cr1=ffffff&amp;f=times_new_roman&amp;l=0&amp;lx=200&amp;ly=-40&amp;hi=10&amp;he=10" async="async"></script>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="Python笔记之列表与字典" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 F4n9X&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<!--
+<script type="text/javascript" src="/js/src/love.js"></script>
+-->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/src/fireworks.js"></script>

@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>Web 渗透平台 DVWA 搭建 - F4n9X&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="介于法律问题🧐，其实是由于个人能力不足加上怂了😅，没能力也更没胆去互联网上做这类攻击类测试。 遂有了此文，搭建这样一个满是漏洞的该死的易受攻击的 Web 应用程序 渗透平台。">
+<meta name="keywords" content="Web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web 渗透平台 DVWA 搭建">
+<meta property="og:url" content="https://fanqxu.com/2019/01/14/DVWA/index.html">
+<meta property="og:site_name" content="F4n9X&#39;s Blog">
+<meta property="og:description" content="介于法律问题🧐，其实是由于个人能力不足加上怂了😅，没能力也更没胆去互联网上做这类攻击类测试。 遂有了此文，搭建这样一个满是漏洞的该死的易受攻击的 Web 应用程序 渗透平台。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv6qy79j30rk0lygms.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv6py3yj30hs0dcglg.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv6pvaxj30m80goq2r.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv6q9v5j30m80godfo.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv6tdecj30m80go0sk.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv6tk6bj30m80go744.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv6t30lj30m80go745.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv6uw1hj30m80goglg.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv6xcrbj30m80goq2r.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv6xlidj30m80gowec.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fz60cpy7jdj31cj0jgwni.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv70dvtj30vg0n83zw.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv6zixuj30vd0n8glo.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv72obbj30p50pjgmk.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv71o9oj30ez0modg5.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv71mojj30qt0lzwf5.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv70oqfj30ij068gli.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv738f1j30if0baweg.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv73s7xj30fa09imx2.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv76466j30p40m1dhf.jpg">
+<meta property="og:updated_time" content="2019-03-18T12:37:40.635Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Web 渗透平台 DVWA 搭建">
+<meta name="twitter:description" content="介于法律问题🧐，其实是由于个人能力不足加上怂了😅，没能力也更没胆去互联网上做这类攻击类测试。 遂有了此文，搭建这样一个满是漏洞的该死的易受攻击的 Web 应用程序 渗透平台。">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv6qy79j30rk0lygms.jpg">
+<meta name="twitter:site" content="Expert">
+
+
+
+<link rel="alternative" href="/atom.xml" title="Web 渗透平台 DVWA 搭建" type="application/atom+xml">
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/monokai-sublime.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131397348-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-131397348-1');
+</script>
+
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="Web 渗透平台 DVWA 搭建" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="/gallery/DVWA.jpg" alt="Web 渗透平台 DVWA 搭建">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-01-14T06:52:04.000Z">2019-01-14</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/TechShare/">TechShare</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 分钟 读完 (大约 1522 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Web 渗透平台 DVWA 搭建
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>介于法律问题🧐，其实是由于个人能力不足加上怂了😅，没能力也更没胆去互联网上做这类攻击类测试。</p>
+<p>遂有了此文，搭建这样一个满是漏洞的<strong><em>该死的易受攻击的 Web 应用程序</em></strong> 渗透平台。</p>
+</blockquote>
+<a id="more"></a>
+<p> <strong><em><u>环境：</u></em></strong></p>
+<ul>
+<li>物理机 Ubuntu 18.04 desktop</li>
+<li>VirtualBox 5.2.18_Ubuntu</li>
+<li>服务器 Ubuntu 16.04 server</li>
+<li>DVWA <ul>
+<li><a href="https://github.com/ethicalhack3r/DVWA" target="_blank" rel="noopener">https://github.com/ethicalhack3r/DVWA</a></li>
+<li><a href="http://dvwa.co.uk/" target="_blank" rel="noopener">http://dvwa.co.uk/</a></li>
+</ul>
+</li>
+</ul>
+<p><img src="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv6qy79j30rk0lygms.jpg" alt=""></p>
+<p>此文分为三部分，第一部分为服务器的安装，第二部分为基本环境配置，第三部分为 DVWA 的部署。</p>
+<h2 id="0x00-安装-Ubuntu-服务器"><a href="#0x00-安装-Ubuntu-服务器" class="headerlink" title="0x00 安装 Ubuntu 服务器"></a>0x00 安装 Ubuntu 服务器</h2><p>将 Ubuntu 16.04 server 安装至 VirtualBox ，当然安装到 VMware 中也行；其中一些简单的步骤并为截图。</p>
+<p><img src="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv6py3yj30hs0dcglg.jpg" alt=""></p>
+<p>我的主机名，<strong><em>webServ</em></strong> </p>
+<p><img src="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv6pvaxj30m80goq2r.jpg" alt=""></p>
+<p>设置用户名，亲测 <strong><em>admin</em></strong> 不可以 😂</p>
+<p><img src="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv6q9v5j30m80godfo.jpg" alt=""></p>
+<p>不要加密家目录</p>
+<p><img src="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv6tdecj30m80go0sk.jpg" alt=""></p>
+<p>将更改写入磁盘</p>
+<p><img src="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv6tk6bj30m80go744.jpg" alt=""></p>
+<p>不自动更新</p>
+<p><img src="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv6t30lj30m80go745.jpg" alt=""></p>
+<p>这里是重点，需选择如图所示三项，其中 <strong>LAMP</strong> 即分别为 Linux 、Apache、MySQL、PHP。</p>
+<p><img src="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv6uw1hj30m80goglg.jpg" alt=""></p>
+<p>设置 MySQL 的 root 密码</p>
+<p><img src="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv6xcrbj30m80goq2r.jpg" alt=""></p>
+<p>完成安装后重启</p>
+<p><img src="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv6xlidj30m80gowec.jpg" alt=""></p>
+<p>本地物理机 ssh 连上服务器</p>
+<p><img src="http://ww1.sinaimg.cn/large/006V665tgy1fz60cpy7jdj31cj0jgwni.jpg" alt=""></p>
+<h2 id="0x01-基本环境配置"><a href="#0x01-基本环境配置" class="headerlink" title="0x01 基本环境配置"></a>0x01 基本环境配置</h2><h3 id="卸载-PHP7"><a href="#卸载-PHP7" class="headerlink" title="卸载 PHP7"></a>卸载 PHP7</h3><p>由于我们需要的是 <em>PHP5</em> ，故通过下面一条命令将之前安装系统时装的 <strong>LAMP</strong> 中的 <em>PHP7</em> 卸载掉。</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get purge `dpkg -l | grep php| awk <span class="hljs-string">'&#123;print $2&#125;'</span> |tr <span class="hljs-string">"\n"</span> <span class="hljs-string">" "</span>`</span><br></pre></td></tr></table></figure>
+<h3 id="安装-PHP5"><a href="#安装-PHP5" class="headerlink" title="安装 PHP5"></a>安装 PHP5</h3><p>添加 <em>PHP5</em> 的 <strong><em>ppa</em></strong> 源</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo add-apt-repository ppa:ondrej/php</span><br></pre></td></tr></table></figure>
+<p>更新索引</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update</span><br></pre></td></tr></table></figure>
+<p>更新系统所有软件</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
+<p>安装 <em>PHP5</em></p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install php5.6</span><br></pre></td></tr></table></figure>
+<h3 id="依赖性"><a href="#依赖性" class="headerlink" title="依赖性"></a>依赖性</h3><p>安装依赖</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install php5.6-mbstring php5.6-mcrypt php5.6-mysql php5.6-xml</span><br></pre></td></tr></table></figure>
+<p>再次查看 <strong>PHP</strong> 版本</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ php -v</span><br><span class="line">PHP 5.6.40-1+ubuntu16.04.1+deb.sury.org+1 (cli) </span><br><span class="line">Copyright (c) 1997-2016 The PHP Group</span><br><span class="line">Zend Engine v2.6.0, Copyright (c) 1998-2016 Zend Technologies</span><br><span class="line">    with Zend OPcache v7.0.6-dev, Copyright (c) 1999-2016, by Zend Technologies</span><br></pre></td></tr></table></figure>
+<h3 id="Apache"><a href="#Apache" class="headerlink" title="Apache"></a>Apache</h3><p>开启 <em>Apache</em> 服务</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service apache2 start</span><br></pre></td></tr></table></figure>
+<p>完成后可以打开本地网页查看 <em>Apache</em> 服务是否正常，此处的 <em>URL</em> 为服务器的 IP 地址。</p>
+<ul>
+<li><a href="http://192.168.43.218" target="_blank" rel="noopener">http://192.168.43.218</a></li>
+</ul>
+<p><img src="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv70dvtj30vg0n83zw.jpg" alt=""></p>
+<p>启用 <em>Apache</em> 中的 <em>PHP5.6</em> 模块</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">$ sudo a2enmod php5.6</span><br><span class="line">perl: warning: Setting locale failed.</span><br><span class="line">perl: warning: Please check that your locale settings:</span><br><span class="line">        LANGUAGE = (<span class="hljs-built_in">unset</span>),</span><br><span class="line">        LC_ALL = (<span class="hljs-built_in">unset</span>),</span><br><span class="line">        LC_PAPER = <span class="hljs-string">"zh_CN.UTF-8"</span>,</span><br><span class="line">        LC_ADDRESS = <span class="hljs-string">"zh_CN.UTF-8"</span>,</span><br><span class="line">        LC_MONETARY = <span class="hljs-string">"zh_CN.UTF-8"</span>,</span><br><span class="line">        LC_NUMERIC = <span class="hljs-string">"zh_CN.UTF-8"</span>,</span><br><span class="line">        LC_TELEPHONE = <span class="hljs-string">"zh_CN.UTF-8"</span>,</span><br><span class="line">        LC_IDENTIFICATION = <span class="hljs-string">"zh_CN.UTF-8"</span>,</span><br><span class="line">        LC_MEASUREMENT = <span class="hljs-string">"zh_CN.UTF-8"</span>,</span><br><span class="line">        LC_CTYPE = <span class="hljs-string">"en_US.UTF-8"</span>,</span><br><span class="line">        LC_TIME = <span class="hljs-string">"zh_CN.UTF-8"</span>,</span><br><span class="line">        LC_NAME = <span class="hljs-string">"zh_CN.UTF-8"</span>,</span><br><span class="line">        LANG = <span class="hljs-string">"en_US.UTF-8"</span></span><br><span class="line">    are supported and installed on your system.</span><br><span class="line">perl: warning: Falling back to a fallback locale (<span class="hljs-string">"en_US.UTF-8"</span>).</span><br><span class="line">Considering dependency mpm_prefork <span class="hljs-keyword">for</span> php5.6:</span><br><span class="line">Considering conflict mpm_event <span class="hljs-keyword">for</span> mpm_prefork:</span><br><span class="line">Considering conflict mpm_worker <span class="hljs-keyword">for</span> mpm_prefork:</span><br><span class="line">Module mpm_prefork already enabled</span><br><span class="line">Considering conflict php5 <span class="hljs-keyword">for</span> php5.6:</span><br><span class="line">Module php5.6 already enabled</span><br></pre></td></tr></table></figure>
+<p>重启 <em>Apache</em> 服务</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service apache2 restart</span><br></pre></td></tr></table></figure>
+<h2 id="0x02-DVWA-部署"><a href="#0x02-DVWA-部署" class="headerlink" title="0x02 DVWA 部署"></a>0x02 DVWA 部署</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>下载 <em>DVWA</em> 到本地服务器</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo wget https://github.com/ethicalhack3r/DVWA/archive/master.zip</span><br></pre></td></tr></table></figure>
+<p>解压到相应目录</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install unzip</span><br><span class="line">$ sudo unzip DWVA-master.zip -d /var/www/html/dvwa</span><br></pre></td></tr></table></figure>
+<p>这时就可以打开 <em>Web</em> 界面</p>
+<ul>
+<li><a href="http://192.168.43.218/DVWA/setup.php" target="_blank" rel="noopener">http://192.168.43.218/DVWA/setup.php</a></li>
+</ul>
+<p><img src="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv6zixuj30vd0n8glo.jpg" alt=""></p>
+<p>提示需将一个配置文件修改名字</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="hljs-built_in">cd</span> /var/www/html/dvwa/config/</span><br><span class="line">$ sudo mv config.inc.php.dist config.inc.php</span><br></pre></td></tr></table></figure>
+<p>再次打开 <em>Web</em> 界面</p>
+<h3 id="选项及-PHP-模块-gd"><a href="#选项及-PHP-模块-gd" class="headerlink" title="选项及 PHP 模块 gd"></a>选项及 PHP 模块 gd</h3><blockquote>
+<p>此后，就根据Web界面的提示依次完成相应配置</p>
+</blockquote>
+<p>开启 <em>allow_url_include</em>，</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vi /etc/php/5.6/apache2/php.ini</span><br></pre></td></tr></table></figure>
+<p>开启这个就可让 <em>include include_once require</em> 和 <em>require_once</em> 都能用 <em>url</em> 和伪协议</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">allow_url_include = On</span><br></pre></td></tr></table></figure>
+<p>安装 <em>PHP</em> 的一个模块</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install php5.6-gd</span><br></pre></td></tr></table></figure>
+<p>打开 <em>Web</em> 界面查看</p>
+<p><img src="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv72obbj30p50pjgmk.jpg" alt=""></p>
+<h3 id="秘钥"><a href="#秘钥" class="headerlink" title="秘钥"></a>秘钥</h3><p>下一个就是 <em>reCAPTCHA key</em>，这个就有点麻烦，可能得需一个<em>Google</em>账号加科学上网。首先打开 <em>dvwa</em> 目录下的 <em>config</em> 目录下的一个配置文件。</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vi dvwa/config/config.inc.php</span><br></pre></td></tr></table></figure>
+<p>打开后找到一下字段……</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># ReCAPTCHA settings</span></span><br><span class="line"><span class="hljs-comment">#   Used for the 'Insecure CAPTCHA' module</span></span><br><span class="line"><span class="hljs-comment">#   You'll need to generate your own keys at: https://www.google.com/recaptcha/admin</span></span><br><span class="line"><span class="hljs-variable">$_DVWA</span>[ <span class="hljs-string">'recaptcha_public_key'</span> ]  = <span class="hljs-string">''</span>;</span><br><span class="line"><span class="hljs-variable">$_DVWA</span>[ <span class="hljs-string">'recaptcha_private_key'</span> ] = <span class="hljs-string">''</span>;</span><br></pre></td></tr></table></figure>
+<p>按照提示，打开以上那个链接……</p>
+<ul>
+<li><a href="https://www.google.com/recaptcha/admin" target="_blank" rel="noopener">https://www.google.com/recaptcha/admin</a></li>
+</ul>
+<p><strong>Label</strong> 栏里就填上 <strong><em>DVWA</em></strong> ，然后勾选 <em>reCAPTCHA v3</em> 以及 <em>Accept</em> ，最后点击 <em>Register</em> 。</p>
+<p><img src="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv71o9oj30ez0modg5.jpg" alt=""></p>
+<p>将秘钥复制到配置文件中的相应位置，</p>
+<p><img src="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv71mojj30qt0lzwf5.jpg" alt=""></p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-variable">$_DVWA</span>[ <span class="hljs-string">'recaptcha_public_key'</span> ]  = <span class="hljs-string">'6LfKd4kUAAAAAEk6g_eoecny__1zZwdknXuE2Lju'</span>;</span><br><span class="line"><span class="hljs-variable">$_DVWA</span>[ <span class="hljs-string">'recaptcha_private_key'</span> ] = <span class="hljs-string">'6LfKd4kUAAAAAECiwIiv5nrmh_k75TsKabJt0f3W'</span>;</span><br></pre></td></tr></table></figure>
+<p>保存退出，刷新页面就会看到生效。</p>
+<h3 id="目录可写权"><a href="#目录可写权" class="headerlink" title="目录可写权"></a>目录可写权</h3><p>将上面三个目录修改可写权限</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chgrp www-data /var/www/html/dvwa/hackable/uploads/</span><br><span class="line">$ sudo chgrp www-data /var/www/html/dvwa/external/phpids/0.6/lib/IDS/tmp/phpids_log.txt</span><br><span class="line">$ sudo chgrp www-data /var/www/html/dvwa/config/</span><br></pre></td></tr></table></figure>
+<h3 id="数据库密码"><a href="#数据库密码" class="headerlink" title="数据库密码"></a>数据库密码</h3><p>最后，还有一个小问题就是关于数据库的密码，还是打开那个配置文件</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vi dvwa/config/config.inc.php</span><br></pre></td></tr></table></figure>
+<p>找到以下字段</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-variable">$_DVWA</span> = array();</span><br><span class="line"><span class="hljs-variable">$_DVWA</span>[ <span class="hljs-string">'db_server'</span> ]   = <span class="hljs-string">'127.0.0.1'</span>;</span><br><span class="line"><span class="hljs-variable">$_DVWA</span>[ <span class="hljs-string">'db_database'</span> ] = <span class="hljs-string">'dvwa'</span>;</span><br><span class="line"><span class="hljs-variable">$_DVWA</span>[ <span class="hljs-string">'db_user'</span> ]     = <span class="hljs-string">'root'</span>;</span><br><span class="line"><span class="hljs-variable">$_DVWA</span>[ <span class="hljs-string">'db_password'</span> ] = <span class="hljs-string">'p@aap0rd'</span>;</span><br></pre></td></tr></table></figure>
+<p>重点是最后这一项，将引号中的密码设置为之前设置的 <strong><em>MySQL</em></strong> 数据库密码</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-variable">$_DVWA</span>[ <span class="hljs-string">'db_password'</span> ] = <span class="hljs-string">'toor'</span>;</span><br></pre></td></tr></table></figure>
+<p>而不是设置为空密码，若设置为空密码，点击 <code>Create/Reset Database</code> 就会出现<strong><em>不能连接 MySQL 服务</em></strong> 。</p>
+<p><img src="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv70oqfj30ij068gli.jpg" alt=""></p>
+<p>设置正确后再次点击 <code>Create/Reset Database</code> </p>
+<p><img src="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv738f1j30if0baweg.jpg" alt=""></p>
+<p>点击登录，默认用户名 <em>admin</em> 密码 <em>password</em></p>
+<p><img src="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv73s7xj30fa09imx2.jpg" alt=""></p>
+<p><img src="http://ww1.sinaimg.cn/large/006V665tgy1fz5zv76466j30p40m1dhf.jpg" alt=""></p>
+<p>完成！！！</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Web/">Web</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/03/20/Bypass-campusNet/index.html">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Bypass 校园网认证</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/01/03/mi5s-magisk/index.html">
+                <span class="level-item">拿到Android Root管理权</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: false,
+        app_id: 'sr3jdB7UEto7mridvIc0wVsa-gzGzoHsz',
+        app_key: 'XhGF68GD6Pz8U5XewWhjcL8j',
+        placeholder: 'Say something...'
+    });
+</script>
+
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="FanqXu">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        FanqXu
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Special Like Sao Operation
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>World</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        15
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        6
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        14
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/FanqXu">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/FanqXu">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Facebook" href="https://www.facebook.com/zhuanjia.">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="https://twitter.com/Expert83551161">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="RSS" href="/atom.xml">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#0x00-安装-Ubuntu-服务器">
+        <span class="has-mr-6">1</span>
+        <span>0x00 安装 Ubuntu 服务器</span>
+        </a></li><li>
+        <a class="is-flex" href="#0x01-基本环境配置">
+        <span class="has-mr-6">2</span>
+        <span>0x01 基本环境配置</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#卸载-PHP7">
+        <span class="has-mr-6">2.1</span>
+        <span>卸载 PHP7</span>
+        </a></li><li>
+        <a class="is-flex" href="#安装-PHP5">
+        <span class="has-mr-6">2.2</span>
+        <span>安装 PHP5</span>
+        </a></li><li>
+        <a class="is-flex" href="#依赖性">
+        <span class="has-mr-6">2.3</span>
+        <span>依赖性</span>
+        </a></li><li>
+        <a class="is-flex" href="#Apache">
+        <span class="has-mr-6">2.4</span>
+        <span>Apache</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#0x02-DVWA-部署">
+        <span class="has-mr-6">3</span>
+        <span>0x02 DVWA 部署</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#下载">
+        <span class="has-mr-6">3.1</span>
+        <span>下载</span>
+        </a></li><li>
+        <a class="is-flex" href="#选项及-PHP-模块-gd">
+        <span class="has-mr-6">3.2</span>
+        <span>选项及 PHP 模块 gd</span>
+        </a></li><li>
+        <a class="is-flex" href="#秘钥">
+        <span class="has-mr-6">3.3</span>
+        <span>秘钥</span>
+        </a></li><li>
+        <a class="is-flex" href="#目录可写权">
+        <span class="has-mr-6">3.4</span>
+        <span>目录可写权</span>
+        </a></li><li>
+        <a class="is-flex" href="#数据库密码">
+        <span class="has-mr-6">3.5</span>
+        <span>数据库密码</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Notes/">
+            <span class="level-start">
+                <span class="level-item">Notes</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Software/">
+            <span class="level-start">
+                <span class="level-item">Software</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/TechShare/">
+            <span class="level-start">
+                <span class="level-item">TechShare</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Trivia/">
+            <span class="level-start">
+                <span class="level-item">Trivia</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/不美化，怎开发/">
+            <span class="level-start">
+                <span class="level-item">不美化，怎开发</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/骚姿势/">
+            <span class="level-start">
+                <span class="level-item">骚姿势</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Blog/" style="font-size: 20px;">Blog</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/Terminal/" style="font-size: 10px;">Terminal</a> <a href="/tags/Web/" style="font-size: 20px;">Web</a> <a href="/tags/conky/" style="font-size: 10px;">conky</a> <a href="/tags/kali/" style="font-size: 10px;">kali</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/nc/" style="font-size: 10px;">nc</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/root/" style="font-size: 10px;">root</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/个人感悟/" style="font-size: 10px;">个人感悟</a> <a href="/tags/隐私/" style="font-size: 10px;">隐私</a>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/04/26/linux-optimization/index.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/linux_optimization.jpg" alt="Linux 桌面性能瓶颈优化">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-26T10:51:40.000Z">2019-04-26</time></div>
+                    <a href="/2019/04/26/linux-optimization/index.html" class="has-link-black-ter is-size-6">Linux 桌面性能瓶颈优化</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/TechShare/">TechShare</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/04/20/NETCAT-使用笔记/index.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/netcat.png" alt="瑞士军刀 NETCAT 使用笔记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-20T11:32:55.000Z">2019-04-20</time></div>
+                    <a href="/2019/04/20/NETCAT-使用笔记/index.html" class="has-link-black-ter is-size-6">瑞士军刀 NETCAT 使用笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Notes/">Notes</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/04/12/burp-install/index.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/burp.jpg" alt="BurpSuite Pro v1.7.37安装指南">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-12T04:59:36.000Z">2019-04-12</time></div>
+                    <a href="/2019/04/12/burp-install/index.html" class="has-link-black-ter is-size-6">BurpSuite Pro v1.7.37安装指南</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Software/">Software</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/04/03/conky-ubuntu/index.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/conkyLogo.png" alt="Ubuntu Conky 折腾笔记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-03T10:17:30.000Z">2019-04-03</time></div>
+                    <a href="/2019/04/03/conky-ubuntu/index.html" class="has-link-black-ter is-size-6">Ubuntu Conky 折腾笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/不美化，怎开发/">不美化，怎开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/20/Bypass-campusNet/index.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/campus.png" alt="Bypass 校园网认证">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-20T12:53:36.000Z">2019-03-20</time></div>
+                    <a href="/2019/03/20/Bypass-campusNet/index.html" class="has-link-black-ter is-size-6">Bypass 校园网认证</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/骚姿势/">骚姿势</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Blog/">
+                        <span class="tag">Blog</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DNS/">
+                        <span class="tag">DNS</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Hexo/">
+                        <span class="tag">Hexo</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Terminal/">
+                        <span class="tag">Terminal</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Web/">
+                        <span class="tag">Web</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/conky/">
+                        <span class="tag">conky</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/kali/">
+                        <span class="tag">kali</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/linux/">
+                        <span class="tag">linux</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nc/">
+                        <span class="tag">nc</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/python/">
+                        <span class="tag">python</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/root/">
+                        <span class="tag">root</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/vim/">
+                        <span class="tag">vim</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/个人感悟/">
+                        <span class="tag">个人感悟</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/隐私/">
+                        <span class="tag">隐私</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript" src="//ra.revolvermaps.com/0/0/6.js?i=0vcz0iyhni5&amp;m=7&amp;c=ff0000&amp;cr1=ffffff&amp;f=times_new_roman&amp;l=0&amp;lx=200&amp;ly=-40&amp;hi=10&amp;he=10" async="async"></script>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="Web 渗透平台 DVWA 搭建" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 F4n9X&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<!--
+<script type="text/javascript" src="/js/src/love.js"></script>
+-->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/src/fireworks.js"></script>

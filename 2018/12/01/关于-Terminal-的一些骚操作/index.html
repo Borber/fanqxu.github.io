@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>关于 Terminal 的一些骚姿势 - F4n9X&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="关于 Terminal 窗口、字体大小以及背景透明度，请自行选择合适方案。 关于那些除了装逼的 Terminal 特效，我就不提了。（譬如好莱坞😎）  写在前面  关于终端模拟器（Updated by 2019.03.18）其实在图形化上使用的都不算是真真正正的终端，算终端模拟器。真正的终端其实是最小化安装系统的那个黑界面。">
+<meta name="keywords" content="Terminal">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于 Terminal 的一些骚姿势">
+<meta property="og:url" content="https://fanqxu.com/2018/12/01/关于-Terminal-的一些骚操作/index.html">
+<meta property="og:site_name" content="F4n9X&#39;s Blog">
+<meta property="og:description" content="关于 Terminal 窗口、字体大小以及背景透明度，请自行选择合适方案。 关于那些除了装逼的 Terminal 特效，我就不提了。（譬如好莱坞😎）  写在前面  关于终端模拟器（Updated by 2019.03.18）其实在图形化上使用的都不算是真真正正的终端，算终端模拟器。真正的终端其实是最小化安装系统的那个黑界面。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fxr5lbdklqj315o0vyjz2.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fxr5lp2x90j31jk14sjs4.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fxr5mhtcckj30s40m41kx.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fxr5mus4zwj30sh0kv1kx.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fxr5nuf82ij30nb0k7jsj.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fxr5ofu2apj30sh0k875y.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fxr5orn6mbj30s60m5tbx.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fxr5n969xoj30nb0k7t9v.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fxtkb0oytlg310z0pa4qq.gif">
+<meta property="og:updated_time" content="2019-04-03T10:21:54.946Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于 Terminal 的一些骚姿势">
+<meta name="twitter:description" content="关于 Terminal 窗口、字体大小以及背景透明度，请自行选择合适方案。 关于那些除了装逼的 Terminal 特效，我就不提了。（譬如好莱坞😎）  写在前面  关于终端模拟器（Updated by 2019.03.18）其实在图形化上使用的都不算是真真正正的终端，算终端模拟器。真正的终端其实是最小化安装系统的那个黑界面。">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/006V665tgy1fxr5lbdklqj315o0vyjz2.jpg">
+<meta name="twitter:site" content="Expert">
+
+
+
+<link rel="alternative" href="/atom.xml" title="关于 Terminal 的一些骚姿势" type="application/atom+xml">
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/monokai-sublime.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131397348-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-131397348-1');
+</script>
+
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="关于 Terminal 的一些骚姿势" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="/gallery/terminal.jpg" alt="关于 Terminal 的一些骚姿势">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-12-01T05:09:20.000Z">2018-12-01</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/不美化，怎开发/">不美化，怎开发</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    9 分钟 读完 (大约 1405 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                关于 Terminal 的一些骚姿势
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>关于 Terminal 窗口、字体大小以及背景透明度，请自行选择合适方案。</p>
+<p>关于那些除了装逼的 Terminal 特效，我就不提了。（譬如好莱坞😎）</p>
+</blockquote>
+<h3>写在前面</h3>
+
+<h4 id="关于终端模拟器（Updated-by-2019-03-18）"><a href="#关于终端模拟器（Updated-by-2019-03-18）" class="headerlink" title="关于终端模拟器（Updated by 2019.03.18）"></a>关于终端模拟器（Updated by 2019.03.18）</h4><p>其实在图形化上使用的都不算是真真正正的终端，算终端模拟器。真正的终端其实是最小化安装系统的那个黑界面。</p>
+<a id="more"></a>
+<p>而 Ubuntu 上自带终端模拟器其实并不怎样，而在应用商店有一个 Terminator（终结者）还算不错。</p>
+<p>可去 Ubuntu Software 点击下载，也可使用命令安装；</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span><span class="hljs-bash"> sudo apt install terminator</span></span><br></pre></td></tr></table></figure>
+<h4>关于shell主题</h4>
+
+<p>我使用的 <em>shell</em> 主题名为 <a href="https://github.com/EliverLara/Sweet" target="_blank" rel="noopener">Sweet</a> ，如下图所示</p>
+<p><img src="http://ww1.sinaimg.cn/large/006V665tgy1fxr5lbdklqj315o0vyjz2.jpg" alt=""></p>
+<h4>关于字体</h4>
+
+<p>另外，我使用的为一款优秀的开源字体 <a href="https://github.com/source-foundry/Hack" target="_blank" rel="noopener">Hack</a> ，如下图<br><img src="http://ww1.sinaimg.cn/large/006V665tgy1fxr5lp2x90j31jk14sjs4.jpg" alt=""></p>
+<p></p><h3>0x00 彩虹喵lolcat</h3><br>这玩意儿是一个将你在终端输入命令后，显示的文本颜色修改为彩虹色，还是比较漂亮的。<br>如你所愿，它被托管在 <strong>Github</strong> 。<br>仓库地址：<a href="https://github.com/busyloop/lolcat" target="_blank" rel="noopener">https://github.com/busyloop/lolcat</a><p></p>
+<p></p><h4>安装</h4><br>首先，安装 <strong>git</strong> 和 <strong>gem</strong><br><figure class="highlight zsh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install git gem</span><br></pre></td></tr></table></figure><p></p>
+<p>其次，克隆 <strong>lolcat</strong> 仓库<br><figure class="highlight zsh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="hljs-built_in">cd</span> /opt &amp;&amp; sudo git <span class="hljs-built_in">clone</span> https://github.com/busyloop/lolcat.git</span><br></pre></td></tr></table></figure></p>
+<p>最后使用 <strong>gem</strong> 安装 <strong>lolcat</strong><br><figure class="highlight zsh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="hljs-built_in">cd</span> /opt/lolcat/bin</span><br><span class="line">$ gem install lolcat</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://ww1.sinaimg.cn/large/006V665tgy1fxr5mhtcckj30s40m41kx.jpg" alt=""></p>
+<p></p><h4>使用</h4><br>使用方法很简单，即在你要执行的命令后面加上它，譬如<br><figure class="highlight zsh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat /proc/cpuinfo | lolcat</span><br></pre></td></tr></table></figure><p></p>
+<p></p><h3>0x01 neofetch显示系统Info</h3><br>这条命令可以个性化地显示当前系统的一些信息，比较酷……<p></p>
+<p></p><h4>安装</h4><br><figure class="highlight zsh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install neofetch</span><br></pre></td></tr></table></figure><p></p>
+<p></p><h4>使用（附图）</h4><br><figure class="highlight zsh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ neofetch</span><br></pre></td></tr></table></figure><p></p>
+<p><img src="http://ww1.sinaimg.cn/large/006V665tgy1fxr5mus4zwj30sh0kv1kx.jpg" alt=""></p>
+<p></p><h3>0x02 fish外壳</h3><p></p>
+<blockquote>
+<p>一个友好、互动的命令行shell。</p>
+<p>不可食用，但用着很舒服的一条鱼。<br>官网：<a href="http://fishshell.com/" target="_blank" rel="noopener">http://fishshell.com/</a><br>Github仓库：<a href="https://github.com/fish-shell/fish-shell" target="_blank" rel="noopener">https://github.com/fish-shell/fish-shell</a></p>
+</blockquote>
+<p></p><h4>安装</h4><br><figure class="highlight zsh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install fish</span><br></pre></td></tr></table></figure><p></p>
+<p></p><h4>使用</h4><br>如果你是短期使用的话，则可以直接在终端输入命令<br><figure class="highlight zsh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ fish</span><br></pre></td></tr></table></figure><p></p>
+<p>如果你喜欢它，想长期，则应该右击你的终端窗口，选择 <font color="red"><code>配置文件首选项</code></font> （英文就是 <font color="red"><code>Preferences</code></font> ）。然后在上方栏选择 <font color="red"><code>命令</code></font> 或者 <font color="red"><code>Command</code></font> ，勾上第二行，并在其下方输入 <font color="red"><code>/usr/bin/fish</code></font> 。如下图所示：<br><img src="http://ww1.sinaimg.cn/large/006V665tgy1fxr5nuf82ij30nb0k7jsj.jpg" alt=""></p>
+<p></p><h3>0x03 oh-my-zsh美化</h3><p></p>
+<blockquote>
+<p>说起 <em>oh-my-zsh</em> ，必须得提 <em>zsh</em> ，和上面的 <em>fish</em> 以及系统默认的 <em>bash</em> ，均属同一类型。<br>也就是说，这三者只能选其一。而我选择的就是 <strong>zsh</strong> ，搭配 <strong>oh-my-zsh</strong> 美化。<br>官网：<a href="https://ohmyz.sh/" target="_blank" rel="noopener">https://ohmyz.sh/</a><br>Github仓库：<a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="noopener">https://github.com/robbyrussell/oh-my-zsh</a></p>
+</blockquote>
+<p></p><h4>快速开始</h4><br>此前得预先安装 <em>zsh</em><br><figure class="highlight zsh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install zsh</span><br></pre></td></tr></table></figure><p></p>
+<p>然后安装 <em>wget</em> 或者 <em>curl</em> ，以及必须的 <em>git</em><br><figure class="highlight zsh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install wget curl git</span><br></pre></td></tr></table></figure></p>
+<p></p><h4>安装</h4><br>最后使用 <em>wget</em> 或者 <em>curl</em> 来安装 <em>oh-my-zsh</em> （两者二选一）<br><figure class="highlight zsh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sh -c <span class="hljs-string">"<span class="hljs-variable">$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)</span>"</span></span><br></pre></td></tr></table></figure><p></p>
+<figure class="highlight zsh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sh -c <span class="hljs-string">"<span class="hljs-variable">$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>"</span></span><br></pre></td></tr></table></figure>
+<p></p><h4>美化配置</h4><p></p>
+<p></p><h5>插件</h5><br>首先，标准的一些插件可在 <font color="red"><code>~/.oh-my-zsh/plugins/</code></font> ，这个目录下找到。<br>其次，自定义的插件，你应该添加到 <font color="red"><code>~/.oh-my-zsh/custom/plugins/</code></font> 目录。<br>最后 ，配置文件<br><figure class="highlight zsh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi ~/.zshrc</span><br></pre></td></tr></table></figure><p></p>
+<p>找到类似与下面这串字符，添加在括号之中。（每一个插件应单独占一行）<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plugins=(</span><br><span class="line">  git</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<p></p><h5>主题</h5><br>编辑配置文件<br><figure class="highlight zsh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi ~/.zshrc</span><br></pre></td></tr></table></figure><p></p>
+<p>找到 <font color="red"><code>ZSH_THEME</code></font> 选项，将你喜欢的主题名替换双引号之中的。譬如，我喜欢随机主题，那么就应该是这个样子。<br><figure class="highlight zsh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZSH_THEME=<span class="hljs-string">"random"</span></span><br></pre></td></tr></table></figure></p>
+<p>保存并退出。</p>
+<p></p><h3>0x04 Byobu</h3><p></p>
+<blockquote>
+<p>一个窗口管理器和终端多路复用器；</p>
+<p>以及终端窗口下方的一排系统监视器。<br>官网：<a href="http://byobu.org" target="_blank" rel="noopener">http://byobu.org</a><br>Github仓库：<a href="https://github.com/dustinkirkland/byobu" target="_blank" rel="noopener">https://github.com/dustinkirkland/byobu</a></p>
+</blockquote>
+<p></p><h4>安装</h4><br><figure class="highlight zsh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install byobu</span><br></pre></td></tr></table></figure><p></p>
+<p></p><h4>快捷键</h4><p></p>
+<ul>
+<li>F1 - 配置菜单</li>
+<li>F2 - 添加一个窗口</li>
+<li>F3 - 移至左边窗口</li>
+<li>F4 - 移至右边窗口</li>
+<li>……<br>其他，具体看配置菜单中的 <strong>help</strong> ……<br><img src="http://ww1.sinaimg.cn/large/006V665tgy1fxr5ofu2apj30sh0k875y.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006V665tgy1fxr5orn6mbj30s60m5tbx.jpg"></li>
+</ul>
+<p></p><h4>关联oh-my-zsh</h4><br>配合 <em>oh-my-zsh</em> 一起使用会更完美，首先编辑一个配置文件<br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span><span class="hljs-bash"> vi <span class="hljs-variable">$HOME</span>/.byobu/.tmux.conf</span></span><br></pre></td></tr></table></figure><p></p>
+<p>然后将以下内容写入此配置文件中<br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set -g default-shell /usr/bin/zsh</span><br><span class="line">set -g default-command /usr/bin/zsh</span><br></pre></td></tr></table></figure></p>
+<p>保存并退出，完毕！</p>
+<p></p><h4>永久使用</h4><br>还是和上面的 <strong>fish</strong> 一样，右击你的终端窗口，选择 <font color="red"><code>配置文件首选项</code></font> （英文就是 <font color="red"><code>Preferences</code></font> ）。然后在上方栏选择 <font color="red"><code>命令</code></font> 或者 <font color="red"><code>Command</code></font> ，勾上第二行，并在其下方输入 <font color="red"><code>/usr/bin/byobu</code></font> 。如下图所示：<br><img src="http://ww1.sinaimg.cn/large/006V665tgy1fxr5n969xoj30nb0k7t9v.jpg" alt=""><p></p>
+<p></p><h4>一件小事</h4><br>使用了 <strong>byobu</strong> ，但你右击终端右（左）上角的关闭按钮，其实终端并没有关闭。它还在后台运行着，这时你想真真正正地去关闭它，得使用命令去关闭。<br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span><span class="hljs-bash"> <span class="hljs-built_in">exit</span></span></span><br></pre></td></tr></table></figure><p></p>
+<p></p><h3>最后</h3><br>搞完了，来跑个小火车庆祝一下😍<br><img src="http://ww1.sinaimg.cn/large/006V665tgy1fxtkb0oytlg310z0pa4qq.gif" alt=""><p></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Terminal/">Terminal</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/12/13/linux-vim-python/index.html">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Vim 搭建 Python 开发环境入坑</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/11/10/便携式Kali-Linux创建/index.html">
+                <span class="level-item">便携式Kali Linux创建</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: false,
+        app_id: 'sr3jdB7UEto7mridvIc0wVsa-gzGzoHsz',
+        app_key: 'XhGF68GD6Pz8U5XewWhjcL8j',
+        placeholder: 'Say something...'
+    });
+</script>
+
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="FanqXu">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        FanqXu
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Special Like Sao Operation
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>World</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        15
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        6
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        14
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/FanqXu">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/FanqXu">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Facebook" href="https://www.facebook.com/zhuanjia.">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="https://twitter.com/Expert83551161">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="RSS" href="/atom.xml">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Notes/">
+            <span class="level-start">
+                <span class="level-item">Notes</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Software/">
+            <span class="level-start">
+                <span class="level-item">Software</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/TechShare/">
+            <span class="level-start">
+                <span class="level-item">TechShare</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Trivia/">
+            <span class="level-start">
+                <span class="level-item">Trivia</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/不美化，怎开发/">
+            <span class="level-start">
+                <span class="level-item">不美化，怎开发</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/骚姿势/">
+            <span class="level-start">
+                <span class="level-item">骚姿势</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Blog/" style="font-size: 20px;">Blog</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/Terminal/" style="font-size: 10px;">Terminal</a> <a href="/tags/Web/" style="font-size: 20px;">Web</a> <a href="/tags/conky/" style="font-size: 10px;">conky</a> <a href="/tags/kali/" style="font-size: 10px;">kali</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/nc/" style="font-size: 10px;">nc</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/root/" style="font-size: 10px;">root</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/个人感悟/" style="font-size: 10px;">个人感悟</a> <a href="/tags/隐私/" style="font-size: 10px;">隐私</a>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/04/26/linux-optimization/index.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/linux_optimization.jpg" alt="Linux 桌面性能瓶颈优化">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-26T10:51:40.000Z">2019-04-26</time></div>
+                    <a href="/2019/04/26/linux-optimization/index.html" class="has-link-black-ter is-size-6">Linux 桌面性能瓶颈优化</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/TechShare/">TechShare</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/04/20/NETCAT-使用笔记/index.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/netcat.png" alt="瑞士军刀 NETCAT 使用笔记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-20T11:32:55.000Z">2019-04-20</time></div>
+                    <a href="/2019/04/20/NETCAT-使用笔记/index.html" class="has-link-black-ter is-size-6">瑞士军刀 NETCAT 使用笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Notes/">Notes</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/04/12/burp-install/index.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/burp.jpg" alt="BurpSuite Pro v1.7.37安装指南">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-12T04:59:36.000Z">2019-04-12</time></div>
+                    <a href="/2019/04/12/burp-install/index.html" class="has-link-black-ter is-size-6">BurpSuite Pro v1.7.37安装指南</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Software/">Software</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/04/03/conky-ubuntu/index.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/conkyLogo.png" alt="Ubuntu Conky 折腾笔记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-03T10:17:30.000Z">2019-04-03</time></div>
+                    <a href="/2019/04/03/conky-ubuntu/index.html" class="has-link-black-ter is-size-6">Ubuntu Conky 折腾笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/不美化，怎开发/">不美化，怎开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/20/Bypass-campusNet/index.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/campus.png" alt="Bypass 校园网认证">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-20T12:53:36.000Z">2019-03-20</time></div>
+                    <a href="/2019/03/20/Bypass-campusNet/index.html" class="has-link-black-ter is-size-6">Bypass 校园网认证</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/骚姿势/">骚姿势</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Blog/">
+                        <span class="tag">Blog</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DNS/">
+                        <span class="tag">DNS</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Hexo/">
+                        <span class="tag">Hexo</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Terminal/">
+                        <span class="tag">Terminal</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Web/">
+                        <span class="tag">Web</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/conky/">
+                        <span class="tag">conky</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/kali/">
+                        <span class="tag">kali</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/linux/">
+                        <span class="tag">linux</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nc/">
+                        <span class="tag">nc</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/python/">
+                        <span class="tag">python</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/root/">
+                        <span class="tag">root</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/vim/">
+                        <span class="tag">vim</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/个人感悟/">
+                        <span class="tag">个人感悟</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/隐私/">
+                        <span class="tag">隐私</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript" src="//ra.revolvermaps.com/0/0/6.js?i=0vcz0iyhni5&amp;m=7&amp;c=ff0000&amp;cr1=ffffff&amp;f=times_new_roman&amp;l=0&amp;lx=200&amp;ly=-40&amp;hi=10&amp;he=10" async="async"></script>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="关于 Terminal 的一些骚姿势" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 F4n9X&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<!--
+<script type="text/javascript" src="/js/src/love.js"></script>
+-->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/src/fireworks.js"></script>
